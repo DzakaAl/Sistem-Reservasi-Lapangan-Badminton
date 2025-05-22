@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reservasi Lapangan</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Reservasi Lapangan Badminton</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="reservation.html">Reservasi</a></li>
+        <li><a href="schedule.html">Jadwal Lapangan</a></li>
+        <li><a href="contact.html">Kontak Kami</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="register.html">Register</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <form action="backend/reservation.php" method="POST">
+      <label for="name">Nama:</label><br>
+      <input type="text" id="name" name="name" placeholder="Nama Anda" required><br><br>
+
+      <label for="date">Tanggal:</label><br>
+      <input type="date" id="date" name="date" required><br><br>
+
+      <label for="time">Waktu:</label><br>
+      <input type="time" id="time" name="time" required><br><br>
+
+      <label for="court">Lapangan:</label><br>
+      <select id="court" name="court" required>
+        <option value="1">Lapangan 1</option>
+        <option value="2">Lapangan 2</option>
+        <option value="3">Lapangan 3</option>
+      </select><br><br>
+
+      <button type="submit">Reservasi</button>
+    </form>
+  </main>
+
+  <footer>
+    <p><strong>Alamat:</strong> Jl. Badminton No. 123, Jakarta, Indonesia</p>
+    <p><strong>Telepon:</strong> +62 812 3456 7890 | <strong>Email:</strong> info@badmintonbooking.com</p>
+    <p>&copy; 2025 Sistem Reservasi Lapangan Badminton. All rights reserved.</p>
+  </footer>
+</body>
+</html>

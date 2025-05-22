@@ -1,0 +1,475 @@
+/* Reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #F5F5F5; /* Abu Muda */
+  color: #333333; /* Hitam Abu */
+}
+
+/* Header */
+header {
+  background-color: #003366; /* Biru Gelap */
+  color: #FFFFFF; /* Putih */
+  padding: 1rem 0;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  margin: 0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  background-color: #003366; /* Biru Gelap */
+  padding: 0.5rem 0;
+  margin: 0;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: #FFFFFF; /* Putih */
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav ul li a:hover {
+  background-color: #3399FF; /* Biru Cerah */
+  color: #FFFFFF; /* Putih */
+}
+
+/* Main content */
+main {
+  padding: 2rem;
+  text-align: center;
+}
+
+main h2 {
+  margin-bottom: 1rem;
+  color: #003366; /* Biru Gelap */
+}
+
+main p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+main .button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #3399FF; /* Biru Cerah */
+  color: #FFFFFF; /* Putih */
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+main .button:hover {
+  background-color: #003366; /* Biru Gelap */
+  color: #FFFFFF; /* Putih */
+}
+
+/* Form styling */
+form {
+  max-width: 500px;
+  margin: 0 auto;
+  background: #FFFFFF; /* Putih */
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #003366; /* Biru Gelap */
+}
+
+form input, form select, form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+form input:focus, form select:focus, form textarea:focus {
+  border-color: #3399FF; /* Biru Cerah */
+  outline: none;
+}
+
+form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #3399FF; /* Biru Cerah */
+  color: #FFFFFF; /* Putih */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+form button:hover {
+  background-color: #003366; /* Biru Gelap */
+  color: #FFFFFF; /* Putih */
+}
+
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+}
+
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+table th {
+  background-color: #003366; /* Biru Gelap */
+  color: #FFFFFF; /* Putih */
+}
+
+table tr:nth-child(even) {
+  background-color: #F5F5F5; /* Abu Muda */
+}
+
+table tr:hover {
+  background-color: #3399FF; /* Biru Cerah */
+  color: #FFFFFF; /* Putih */
+}
+
+/* Footer */
+footer {
+  background-color: #003366; /* Biru Gelap */
+  color: #FFFFFF; /* Putih */
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: 2rem;
+  position: relative;
+  width: 100%;
+}
+
+/* Bagian Hero */
+.hero {
+  background-image: url('gambar/Lap.Badminton.jpg'); /* Gambar lapangan badminton */
+  background-size: cover; /* Gambar memenuhi area */
+  background-position: center; /* Fokus pada tengah gambar */
+  background-repeat: no-repeat;
+  color: #FFFFFF; /* Teks putih untuk kontras */
+  padding: 4rem 2rem;
+  text-align: center;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 51, 102, 0.6); /* Overlay biru gelap dengan transparansi */
+  z-index: 1;
+  border-radius: 8px;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2; /* Pastikan konten berada di atas overlay */
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero .button {
+  padding: 10px 20px;
+  background-color: #3399FF; /* Biru Cerah */
+  color: #FFFFFF; /* Putih */
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.hero .button:hover {
+  background-color: #003366; /* Biru Gelap */
+}
+
+/* Bagian Fasilitas */
+.facilities {
+  text-align: center;
+  padding: 2rem;
+  background-color: #F5F5F5; /* Abu Muda */
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.facilities h2 {
+  color: #003366; /* Biru Gelap */
+  margin-bottom: 1rem;
+}
+
+.facility {
+  display: inline-block;
+  width: 30%;
+  margin: 1%;
+  text-align: center;
+}
+
+.facility img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.facility h3 {
+  margin: 0.5rem 0;
+  color: #333333; /* Hitam Abu */
+}
+
+.facility p {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Bagian Galeri */
+.gallery {
+  text-align: center;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.gallery h2 {
+  color: #003366; /* Biru Gelap */
+  margin-bottom: 1rem;
+}
+
+.gallery-images {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.gallery-images img {
+  width: 30%;
+  border-radius: 8px;
+}
+
+/* Bagian Informasi */
+.info {
+  text-align: center;
+  padding: 2rem;
+  background-color: #FFFFFF; /* Putih */
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.info h2 {
+  color: #003366; /* Biru Gelap */
+  margin-bottom: 1rem;
+}
+
+.info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.info ul li {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+/* Form Container */
+.form-container {
+  background-color: #FFFFFF; /* Putih */
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+}
+
+.form-container h2 {
+  margin-bottom: 1rem;
+  color: #003366; /* Biru Gelap */
+}
+
+.form-container input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-container button {
+  width: 100%;
+  padding: 10px;
+  background-color: #3399FF; /* Biru Cerah */
+  color: #FFFFFF; /* Putih */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.form-container button:hover {
+  background-color: #003366; /* Biru Gelap */
+  color: #FFFFFF; /* Putih */
+}
+
+.form-container p {
+  margin-top: 1rem;
+  font-size: 14px;
+}
+
+.form-container a {
+  color: #3399FF; /* Biru Cerah */
+  text-decoration: none;
+}
+
+.form-container a:hover {
+  text-decoration: underline;
+}
+
+/* Gaya Umum */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+header {
+  background-color: #007bff;
+  color: white;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  background-color: #0056b3;
+  padding: 0.5rem 0;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav ul li a:hover {
+  background-color: #007bff;
+  color: #0056b3;
+}
+
+/* Gaya Khusus untuk Login dan Register */
+.login-page .form-container,
+.register-page .form-container {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  margin: 2rem auto;
+}
+
+.login-page .form-container h2,
+.register-page .form-container h2 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.login-page .form-container input,
+.register-page .form-container input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.login-page .form-container button,
+.register-page .form-container button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.login-page .form-container button:hover,
+.register-page .form-container button:hover {
+  background-color: #0056b3;
+}
+
+.login-page .form-container p,
+.register-page .form-container p {
+  margin-top: 1rem;
+  font-size: 14px;
+}
+
+.login-page .form-container a,
+.register-page .form-container a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.login-page .form-container a:hover,
+.register-page .form-container a:hover {
+  text-decoration: underline;
+}
