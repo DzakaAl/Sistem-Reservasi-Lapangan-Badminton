@@ -1,31 +1,31 @@
 <?php
-// Mengizinkan akses CORS dari frontend
-header('Access-Control-Allow-Origin: *'); // Ganti dengan alamat frontend Anda jika berbeda
-header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE'); // Metode yang diizinkan
-header('Access-Control-Allow-Headers: Content-Type');
+// db.php
 
-// db.php - Database connection script
+require 'vendor/autoload.php';  // Mengimpor MongoDB PHP driver
 
-// Ambil data dari environment variables
-$host = getenv('DB_HOST');      // Database host
-$dbname = getenv('DB_NAME');    // Nama database
-$username = getenv('DB_USERNAME'); // Username untuk database
-$password = getenv('DB_PASSWORD'); // Password untuk database
+// Mengonfigurasi URL MongoDB Atlas Anda
+$mongoUri = "mongodb+srv://database:kingmordzz10@clusterbadminton.gph0l5s.mongodb.net/?retryWrites=true&w=majority&appName=ClusterBadminton";  // Ganti <username>, <password>, dan myDatabase dengan kredensial MongoDB Atlas Anda
 
-// Cek apakah variabel lingkungan sudah terisi
-if (!$host || !$dbname || !$username || !$password) {
-    echo json_encode(['error' => 'Database credentials are missing.']);
-    exit;  // Jika tidak ada variabel yang ditemukan, hentikan eksekusi
-}
-
-// Membuat koneksi PDO ke database
 try {
-    $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    // Set atribut error mode untuk pengecualian
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    // Tangani kesalahan koneksi
-    echo "Connection failed: " . $e->getMessage();
-    exit; // Hentikan eksekusi jika koneksi gagal
+    // Membuat koneksi ke MongoDB
+    $client = new MongoDB\Client($mongoUri);
+
+    // Pilih database
+    $db = $client->myDatabase;  // Ganti dengan nama database yang Anda inginkan
+
+    // Menampilkan semua koleksi dalam database
+    $collections = $db->listCollections();  // Mendapatkan semua koleksi dalam database
+
+    echo "Koneksi ke MongoDB Atlas berhasil!<br>";
+    echo "Daftar Koleksi:<br>";
+
+    // Menampilkan nama-nama koleksi
+    foreach ($collections as $collection) {
+        echo $collection->getName() . "<br>";
+    }
+
+} catch (MongoDB\Driver\Exception\ConnectionException $e) {
+    // Tangani kesalahan jika tidak dapat terhubung ke MongoDB
+    echo "Gagal terhubung ke MongoDB Atlas: " . $e->getMessage();
 }
 ?>
