@@ -1,21 +1,17 @@
 <?php
-require 'vendor/autoload.php';  // Pastikan Anda sudah menginstal vlucas/phpdotenv
-
-use Dotenv\Dotenv;
-
-// Load variabel lingkungan dari file .env
-$dotenv = Dotenv::createImmutable(__DIR__);
-$dotenv->load();
-
-header('Access-Control-Allow-Origin: http://127.0.0.1:5500');
-header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
+header('Access-Control-Allow-Origin: *'); // Ganti dengan alamat frontend Anda jika berbeda
+header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE'); // Metode yang diizinkan
 header('Access-Control-Allow-Headers: Content-Type');
 
 // db.php - Database connection script
-$host = getenv('DB_HOST');
-$dbname = getenv('DB_DATABASE');
-$username = getenv('DB_USERNAME');
-$password = getenv('DB_PASSWORD');
+// Ambil URL koneksi database dari variabel lingkungan
+$databaseUrl = parse_url(getenv('mysql://root:VbdySdDnYXTCxzoaXBTIFvbwmAhXZHHo@caboose.proxy.rlwy.net:10772/railway'));
+
+// Koneksi ke MySQL menggunakan PDO
+$host = $databaseUrl['host'];
+$dbname = ltrim($databaseUrl['path'], '/'); // Mengambil nama database
+$username = $databaseUrl['user'];
+$password = $databaseUrl['pass'];
 
 // Create a PDO instance to connect to the database
 try {
