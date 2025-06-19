@@ -1,6 +1,6 @@
 <?php
 // Mengizinkan akses CORS dari frontend
-header('Access-Control-Allow-Origin: http://127.0.0.1:5500'); // Ganti dengan alamat frontend Anda jika berbeda
+header('Access-Control-Allow-Origin: *'); // Ganti dengan alamat frontend Anda jika berbeda
 header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE'); // Metode yang diizinkan
 header('Access-Control-Allow-Headers: Content-Type');
 
