@@ -1,12 +1,21 @@
 <?php
-header('Access-Control-Allow-Origin: http://127.0.0.1:5500'); // Ganti dengan alamat frontend Anda jika berbeda
-header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE'); // Metode yang diizinkan
+require 'vendor/autoload.php';  // Pastikan Anda sudah menginstal vlucas/phpdotenv
+
+use Dotenv\Dotenv;
+
+// Load variabel lingkungan dari file .env
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+header('Access-Control-Allow-Origin: http://127.0.0.1:5500');
+header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
 header('Access-Control-Allow-Headers: Content-Type');
+
 // db.php - Database connection script
-$host = 'localhost';      // Database host (use '127.0.0.1' if 'localhost' doesn't work)
-$dbname = 'badminton';    // Your database name
-$username = 'root';       // Your database username
-$password = '';           // Your database password
+$host = getenv('DB_HOST');
+$dbname = getenv('DB_DATABASE');
+$username = getenv('DB_USERNAME');
+$password = getenv('DB_PASSWORD');
 
 // Create a PDO instance to connect to the database
 try {
