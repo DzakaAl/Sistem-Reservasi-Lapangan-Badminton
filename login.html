@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
+    <style>
+      body.login-page {
+        min-height: 100vh;
+        background: linear-gradient(120deg, #e0f2fe 0%, #f4f8fb 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Segoe UI", Arial, sans-serif;
+      }
+      .form-container {
+        background: #fff;
+        border-radius: 20px;
+        box-shadow: 0 4px 32px #3399ff18;
+        padding: 2.5rem 2.2rem 2rem 2.2rem;
+        max-width: 370px;
+        width: 100%;
+        position: relative;
+        z-index: 1;
+      }
+      .form-container h2 {
+        text-align: center;
+        font-weight: 800;
+        color: #003366;
+        margin-bottom: 2rem;
+        letter-spacing: 1px;
+        background: linear-gradient(90deg, #3399ff 60%, #22d3ee 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .form-container form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.1rem;
+      }
+      .form-container input[type="email"],
+      .form-container input[type="password"] {
+        border-radius: 10px;
+        border: 1px solid #eaf6ff;
+        padding: 0.7rem 1rem;
+        font-size: 1.08rem;
+        background: #f8fafc;
+        color: #003366;
+        transition: border 0.2s;
+      }
+      .form-container input:focus {
+        border-color: #3399ff;
+        outline: none;
+        background: #fff;
+      }
+      .form-container button[type="submit"] {
+        background: linear-gradient(90deg, #3399ff 60%, #003366 100%);
+        color: #fff;
+        font-weight: 700;
+        border: none;
+        border-radius: 10px;
+        padding: 0.7rem 0;
+        font-size: 1.13rem;
+        box-shadow: 0 2px 8px #3399ff33;
+        transition: background 0.2s;
+        margin-top: 0.3rem;
+        letter-spacing: 0.5px;
+      }
+      .form-container button[type="submit"]:hover {
+        background: linear-gradient(90deg, #003366 60%, #3399ff 100%);
+        color: #fff;
+      }
+      #message {
+        margin-top: 10px;
+        text-align: center;
+        font-weight: 500;
+        font-size: 1rem;
+        min-height: 1.2em;
+      }
+      .form-container p {
+        text-align: center;
+        margin-top: 1.1rem;
+        font-size: 0.98rem;
+        color: #003366;
+      }
+      .form-container a {
+        color: #3399ff;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.2s;
+      }
+      .form-container a:hover {
+        color: #003366;
+        text-decoration: underline;
+      }
+      .login-illustration {
+        position: absolute;
+        right: -80px;
+        bottom: -60px;
+        opacity: 0.08;
+        z-index: 0;
+        pointer-events: none;
+        width: 320px;
+        max-width: 60vw;
+        user-select: none;
+      }
+      @media (max-width: 600px) {
+        .form-container {
+          padding: 1.2rem 0.7rem 1rem 0.7rem;
+        }
+        .login-illustration {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="login-page">
+    <div class="form-container position-relative">
+      <h2>
+        <i class="bi bi-person-circle me-2"></i>Login
+      </h2>
+      <form id="loginForm" autocomplete="on">
+        <input type="email" id="email" placeholder="Email" required autocomplete="email" />
+        <input type="password" id="password" placeholder="Password" required autocomplete="current-password" />
+        <button type="submit"><i class="bi bi-box-arrow-in-right me-1"></i>Login</button>
+      </form>
+
+      <p id="message"></p>
+        <i class="bi bi-person-plus"></i>
+        Belum punya akun? <a href="register.html">Daftar di sini</a>
+      </p>
+      <img src="https://cdn.pixabay.com/photo/2016/03/31/19/14/badminton-1294365_1280.png" alt="Login Illustration" class="login-illustration" loading="lazy">
+    </div>
+
+    <script>
+      const form = document.getElementById("loginForm");
+      const message = document.getElementById("message");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+
+        try {
+          const response = await fetch("api/login.php", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email, password }),
+          });
+
+          const data = await response.json();
+
+          if (response.ok) {
+            message.style.color = "#22c55e";
+            message.textContent = data.message;
+
+            setTimeout(() => {
+              if (data.user && data.user.role === "admin") {
+                window.location.href = "dashboard.html";
+              } else {
+                window.location.href = "index.html";
+              }
+            }, 900);
+          } else {
+            message.style.color = "#e11d48";
+            message.textContent = data.error || "Login gagal";
+          }
+        } catch (error) {
+          message.style.color = "#e11d48";
+          message.textContent = "Terjadi kesalahan jaringan";
+        }
+      });
+    </script>
