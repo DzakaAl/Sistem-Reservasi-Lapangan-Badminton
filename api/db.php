@@ -1,31 +1,21 @@
 <?php
-// db.php
+header('Access-Control-Allow-Origin: http://127.0.0.1:5500'); // Ganti dengan alamat frontend Anda jika berbeda
+header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE'); // Metode yang diizinkan
+header('Access-Control-Allow-Headers: Content-Type');
+// db.php - Database connection script
+$host = 'localhost';      // Database host (use '127.0.0.1' if 'localhost' doesn't work)
+$dbname = 'badminton';    // Your database name
+$username = 'root';       // Your database username
+$password = '';           // Your database password
 
-require 'vendor/autoload.php';  // Mengimpor MongoDB PHP driver
-
-// Mengonfigurasi URL MongoDB Atlas Anda
-$mongoUri = "mongodb+srv://database:kingmordzz10@clusterbadminton.gph0l5s.mongodb.net/?retryWrites=true&w=majority&appName=ClusterBadminton";  // Ganti <username>, <password>, dan myDatabase dengan kredensial MongoDB Atlas Anda
-
+// Create a PDO instance to connect to the database
 try {
-    // Membuat koneksi ke MongoDB
-    $client = new MongoDB\Client($mongoUri);
-
-    // Pilih database
-    $db = $client->myDatabase;  // Ganti dengan nama database yang Anda inginkan
-
-    // Menampilkan semua koleksi dalam database
-    $collections = $db->listCollections();  // Mendapatkan semua koleksi dalam database
-
-    echo "Koneksi ke MongoDB Atlas berhasil!<br>";
-    echo "Daftar Koleksi:<br>";
-
-    // Menampilkan nama-nama koleksi
-    foreach ($collections as $collection) {
-        echo $collection->getName() . "<br>";
-    }
-
-} catch (MongoDB\Driver\Exception\ConnectionException $e) {
-    // Tangani kesalahan jika tidak dapat terhubung ke MongoDB
-    echo "Gagal terhubung ke MongoDB Atlas: " . $e->getMessage();
+    $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    // Set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    // Handle any connection errors
+    echo "Connection failed: " . $e->getMessage();
+    exit; // Stop execution if connection fails
 }
 ?>
